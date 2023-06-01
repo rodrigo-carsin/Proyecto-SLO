@@ -148,3 +148,18 @@ VALUES
 1,
 "Pedro",
 "Gomez");
+
+create table Roles (
+idRol int primary key not null,
+tipo text not null
+);
+ insert into Roles (idRol,tipo) values (2,'Basico');
+
+CREATE TABLE usuarios (
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  nombre text NOT NULL,
+contrasenia TEXT NOT NULL,
+  idRol int NOT NULL,
+	KEY `fk_usuarios_roles` (`idRol`), 
+    CONSTRAINT `fk_usuarios_roles` FOREIGN KEY (`idRol`) REFERENCES `Roles` (`idRol`)  ON DELETE CASCADE ON UPDATE CASCADE
+);
